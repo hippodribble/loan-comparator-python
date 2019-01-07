@@ -5,6 +5,7 @@ import math
 
 
 class LoanCalculator(QMainWindow):
+    '''Loan Comparator - compares 2 mortgages, based on price salary, tax, interest rates, etc.'''
 
     def __init__(self):
         super().__init__()
@@ -69,12 +70,24 @@ class LoanCalculator(QMainWindow):
         self.lblBurden_2.setText(self.percent_format(burden2))
         self.lblSalaryAfterTax_2.setText(self.price_format(nett_salary2))
 
+        self.statusBar().showMessage('Recalculation complete', 200)
+
     def price_format(self, amount):
+        '''format a decimal number as a dollar price
+
+        param:amount:floating-point number to be reformatted
+        returns:the number as a formatted string'''
+
         amount*=100
         amount=int(amount)/100.0
         return '$ {}'.format(amount)
 
     def percent_format(self, amount):
+        '''format a decimal number as a percentage
+
+        amount  floating-point number to be reformatted
+        returns the number as a formatted string'''
+
         amount*=100
         amount=int(amount)
         return '{} %'.format(amount)
